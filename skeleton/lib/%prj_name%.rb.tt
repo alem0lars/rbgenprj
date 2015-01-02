@@ -18,8 +18,17 @@ require 'pathname'
   require 'optionalargument'
   require 'awesome_print'
 <% end %>
+<% if options.with_cfg %>
+  require 'configatron'
+<% end %>
+<% if options.with_cli %>
+  require 'thor'
+<% end %>
 # }}}
 
 # project modules {{{
 require '<%= options.prj_name %>/version'
+<% if options.with_cli %>
+  require 'cli'
+<% end %>
 # }}}

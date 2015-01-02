@@ -40,6 +40,7 @@ class RBGenPrj < Thor
   # additional features
   option :with_core_exts, :type => :boolean
   option :with_cfg,       :type => :boolean
+  option :with_cli,       :type => :boolean
   desc 'generate <dst_path>',
        'generate a new ruby project into <dst_path> from a starting skeleton'
   def generate(dst_path)
@@ -48,9 +49,10 @@ class RBGenPrj < Thor
           'the provided destination path is not a valid directory')
     end
 
-    say "generating a new ruby project called #{options[:prj_name]}\n", :cyan
+    say "generating a new ruby project called: #{options[:prj_name]}\n", :cyan
 
-    directory 'skeleton', File.join(dst_path, options[:prj_name]) #, :exclude_pattern => excluded_skeleton_files
+    directory 'skeleton', File.join(dst_path, options[:prj_name]),
+              :exclude_pattern => excluded_skeleton_files(options)
     Dir.glob(File.join(dst_path, options[:prj_name], 'bin', '*')) do |bin_path|
       chmod(bin_path, 0755)
     end
@@ -66,9 +68,25 @@ class RBGenPrj < Thor
 
   # utils {{{
 
-  #def excluded_skeleton_files
-  #  
-  #end
+  def excluded_skeleton_files(options)
+    exclude_pattern = nil
+
+    features_info(options).each do |option_name, paths|
+      unless options[option_name]
+        paths.each do |path|
+          exclude_pattern = exclude_pattern ?
+              /#{exclude_pattern}|#{path}/ :
+              /#{path}/
+        end
+      end
+    end
+
+    exclude_pattern
+  end
+
+  def features_info(options)
+    {:with_cli => ['cli.rb']}
+  end
 
   # }}}
 

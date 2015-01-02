@@ -28,6 +28,9 @@ Gem::Specification.new do |gem|
   <% if options.with_cfg %>
     gem.add_runtime_dependency     'configatron'
   <% end %>
+  <% if options.with_cli %>
+    gem.add_runtime_dependency     'thor'
+  <% end %>
 
   gem.add_development_dependency 'bundler'
   gem.add_development_dependency 'rake'
