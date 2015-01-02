@@ -1,0 +1,1 @@
+--markup markdown --title "<%= options.prj_name %> docs" --protected

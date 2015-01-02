@@ -1,0 +1,27 @@
+# <%= options.prj_name %>
+
+* [homepage](https://rubygems.org/gems/<%= options.prj_name %>)
+* [documentation](http://rubydoc.info/gems/<%= options.prj_name %>/frames)
+* [email](mailto:<%= options.author_email %>)
+
+## description
+
+TODO: description
+
+## features
+
+## examples
+
+TODO: how to use it
+
+## requirements
+
+## install
+
+    $ gem install <%= options.prj_name %>
+
+## copyright
+
+copyright (c) <%= Time.now.strftime('%Y') %> <%= options.author_name %>
+
+see {file:LICENSE} for details.

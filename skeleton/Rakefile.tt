@@ -1,0 +1,22 @@
+# encoding: utf-8
+
+require 'rubygems'
+require 'bundler/setup'
+require 'bundler/gem_tasks'
+require 'rake'
+require 'rake/clean'
+require 'rspec/core/rake_task'
+require 'yard'
+require '<%= options.prj_name %>'
+
+
+RSpec::Core::RakeTask.new
+
+YARD::Rake::YardocTask.new
+
+desc 'open a console preloaded with <%= options.prj_name %>'
+task :console do
+  sh 'pry --gem', verbose: false
+end
+
+task default: [:spec]

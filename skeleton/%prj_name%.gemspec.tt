@@ -1,0 +1,39 @@
+# -*- encoding: utf-8 -*-
+
+require File.expand_path('../lib/<%= options.prj_name %>/version', __FILE__)
+
+
+Gem::Specification.new do |gem|
+  gem.name          = '<%= options.prj_name %>'
+  gem.version       = <%= options.prj_module %>::VERSION
+  gem.summary       = %q{<%= options.prj_summary %>}
+  gem.description   = %q{<%= options.prj_desc %>}
+  gem.license       = 'Apache License Version 2.0'
+  gem.authors       = ['<%= options.author_name %>']
+  gem.email         = '<%= options.author_email %>'
+  gem.homepage      = 'https://rubygems.org/gems/<%= options.prj_name %>'
+
+  gem.files         = `git ls-files`.split($/)
+  gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
+  gem.test_files    = gem.files.grep(%r{^spec/})
+  gem.require_paths = ['lib']
+
+  <% if options.with_core_exts %>
+    gem.add_runtime_dependency     'hashie'
+    gem.add_runtime_dependency     'facets'
+    gem.add_runtime_dependency     'deterministic'
+    gem.add_runtime_dependency     'optionalargument'
+    gem.add_runtime_dependency     'awesome_print'
+  <% end %>
+  <% if options.with_cfg %>
+    gem.add_runtime_dependency     'configatron'
+  <% end %>
+
+  gem.add_development_dependency 'bundler'
+  gem.add_development_dependency 'rake'
+  gem.add_development_dependency 'yard'
+  gem.add_development_dependency 'rspec'
+  gem.add_development_dependency 'pry'
+  gem.add_development_dependency 'pry-byebug'
+
+end

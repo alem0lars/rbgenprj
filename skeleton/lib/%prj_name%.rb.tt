@@ -1,0 +1,25 @@
+module <%= options.prj_module %>; end
+
+
+# rubygems & bundler {{{
+require 'rubygems'
+require 'bundler/setup'
+# }}}
+
+# core modules {{{
+require 'pathname'
+# }}}
+
+# external modules {{{
+<% if options.with_core_exts %>
+  require 'hashie'
+  require 'facets'
+  require 'deterministic'
+  require 'optionalargument'
+  require 'awesome_print'
+<% end %>
+# }}}
+
+# project modules {{{
+require '<%= options.prj_name %>/version'
+# }}}

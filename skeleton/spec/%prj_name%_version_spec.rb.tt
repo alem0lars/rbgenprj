@@ -1,0 +1,37 @@
+require 'spec_helper'
+require '<%= options.prj_name %>'
+
+
+describe '<%= options.prj_module %>::VERSION' do
+
+  it 'should have a semver compliant format' do
+    version = <%= options.prj_module %>::VERSION
+    expect(version).to_not be_empty
+    expect(version).to match(/[0-9]+\.[0-9]+\.[0-9]+/)
+  end
+
+end
+
+describe '<%= options.prj_module %>::VERSION_MAJOR' do
+
+  it 'should be positive' do
+    expect(<%= options.prj_module %>::VERSION_MAJOR).to be >= 0
+  end
+
+end
+
+describe '<%= options.prj_module %>::VERSION_MINOR' do
+
+  it 'should be positive' do
+    expect(<%= options.prj_module %>::VERSION_MINOR).to be >= 0
+  end
+
+end
+
+describe '<%= options.prj_module %>::VERSION_PATCH' do
+
+  it 'should be positive' do
+    expect(<%= options.prj_module %>::VERSION_PATCH).to be >= 0
+  end
+
+end

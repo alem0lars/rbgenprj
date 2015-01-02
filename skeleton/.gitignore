@@ -1,0 +1,27 @@
+# ignores for generated/temporary files {{{
+
+# generated documentation
+doc/
+
+# log & temporary files
+log/
+tmp/
+
+# gems
+pkg/
+vendor/cache/*.gem
+
+# }}}
+
+
+# ignores for tools {{{
+
+# intellij-idea project files
+.idea/
+*.iml
+
+# sublime-text project files
+*.sublime-project
+*.sublime-workspace
+
+# }}}
