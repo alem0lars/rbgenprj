@@ -53,9 +53,6 @@ class RBGenPrj < Thor
 
     directory 'skeleton', File.join(dst_path, options[:prj_name]),
               :exclude_pattern => excluded_skeleton_files(options)
-    Dir.glob(File.join(dst_path, options[:prj_name], 'bin', '*')) do |bin_path|
-      chmod(bin_path, 0755)
-    end
 
     say "\ndone\n", :green
   end
