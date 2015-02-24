@@ -57,13 +57,13 @@ class RBGenPrj < Thor
     say "\ndone\n", :green
   end
 
+  private
+
   def prj_name
     options.prj_name
   end
 
-  private
-
-  # utils {{{
+  # {{{ Utils
 
   def excluded_skeleton_files(options)
     exclude_pattern = nil
